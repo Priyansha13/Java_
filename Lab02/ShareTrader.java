@@ -1,6 +1,6 @@
 public class ShareTrader {
 
-    // Returns maximum profit with two transactions on a given list of stock prices
+    // To returns maximum profit with two transactions on a given list of stock prices
     static int maxProfit(int[] price, int n) {
         int[] profit = new int[n]; // Create and initialize profit array
 
