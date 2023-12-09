@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class HighOccurance {
+public class MostFrequentNumbers {
     public static void Frequent(int[] numbers , int k){
         //sorting the array
         Arrays.sort(numbers);
