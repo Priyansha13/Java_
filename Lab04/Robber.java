@@ -1,7 +1,6 @@
+import java.util.Scanner;
+
 // Abstract class Robber
-
-import java.util.Arrays;
-
 abstract class Robber {
     //methods
     public void RobbingClass(){
@@ -76,23 +75,13 @@ class JAVAProfessionalRobber extends Robber {
             throw new IllegalArgumentException("MultiHouseBuilding array must have exactly 6 elements.");
         }
 
-        int n = moneyInEachHouseType.length;
+        int option1 = moneyInEachHouseType[0] + moneyInEachHouseType[2] + moneyInEachHouseType[4];
+        int option2 = moneyInEachHouseType[1] + moneyInEachHouseType[3] + moneyInEachHouseType[5];
+        int option3 = moneyInEachHouseType[0] + moneyInEachHouseType[3];
+        int option4 = moneyInEachHouseType[5] + moneyInEachHouseType[2];
 
-        if (n == 0) {
-            return 0;
-        } else if (n == 1) {
-            return moneyInEachHouseType[0];
-        }
-
-        int[] dp = new int[n];
-        dp[0] = moneyInEachHouseType[0];
-        dp[1] = Math.max(moneyInEachHouseType[0], moneyInEachHouseType[1]);
-
-        for (int i = 2; i < n; i++) {
-            dp[i] = Math.max(dp[i - 1], dp[i - 2] + moneyInEachHouseType[i]);
-        }
-
-        return dp[n - 1];
+        // Find and return the maximum of the four options
+        return Math.max(Math.max(option1, option2), Math.max(option3, option4));
     }
 }
 
@@ -102,18 +91,56 @@ class MainRobber {
         JAVAProfessionalRobber javaRobber = new JAVAProfessionalRobber();
 
         // Example arrays
-        int[] rowHouseMoney = {8, 6, 9, 30};
-        int[] roundHouseMoney = {2, 7, 9, 5};
-        int[] squareHouseMoney = {4, 10, 1, 10};
-        int[] multiHouseMoney = {3, 2, 7, 10, 2, 5};
+        // int[] rowHouseMoney = {8, 6, 9, 30};
+        // int[] roundHouseMoney = {2, 7, 9, 5};
+        // int[] squareHouseMoney = {4, 10, 1, 10};
+        // int[] multiHouseMoney = {3, 2, 7, 10, 2, 5};
+
+        // // Call the methods
+        // System.out.println("Maximum amount from RowHouses: " + javaRobber.RowHouses(rowHouseMoney));
+        // System.out.println("Maximum amount from RoundHouses: " + javaRobber.RoundHouses(roundHouseMoney));
+        // System.out.println("Maximum amount from SquareHouses: " + javaRobber.SquareHouses(squareHouseMoney));
+        // System.out.println("Maximum amount from MultiHouseBuilding: " + javaRobber.MultiHouseBuilding(multiHouseMoney));
+
+        // Scanner for user input
+        Scanner scanner = new Scanner(System.in);
+
+         // Take input for rowHouseMoney
+        int[] rowHouseMoney = new int[4];
+        System.out.println("Enter money for each row house (4 elements):");
+        for (int i = 0; i < 4; i++) {
+            rowHouseMoney[i] = scanner.nextInt();
+        }
+
+        // Take input for roundHouseMoney
+        int[] roundHouseMoney = new int[4];
+        System.out.println("Enter money for each round house (4 elements):");
+        for (int i = 0; i < 4; i++) {
+            roundHouseMoney[i] = scanner.nextInt();
+        }
+
+        // Take input for squareHouseMoney
+        int[] squareHouseMoney = new int[4];
+        System.out.println("Enter money for each square house (4 elements):");
+        for (int i = 0; i < 4; i++) {
+            squareHouseMoney[i] = scanner.nextInt();
+        }
+
+        // Take input for multiHouseMoney
+        int[] multiHouseMoney = new int[6];
+        System.out.println("Enter money for each type of house in a multi-type building (6 elements):");
+        for (int i = 0; i < 6; i++) {
+            multiHouseMoney[i] = scanner.nextInt();
+        }
+
+        // Close the scanner
+        scanner.close();
 
         // Call the methods
         System.out.println("Maximum amount from RowHouses: " + javaRobber.RowHouses(rowHouseMoney));
         System.out.println("Maximum amount from RoundHouses: " + javaRobber.RoundHouses(roundHouseMoney));
         System.out.println("Maximum amount from SquareHouses: " + javaRobber.SquareHouses(squareHouseMoney));
         System.out.println("Maximum amount from MultiHouseBuilding: " + javaRobber.MultiHouseBuilding(multiHouseMoney));
-
-        
 
         // Call the default method
         javaRobber.MachineLearning();
