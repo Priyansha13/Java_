@@ -3,6 +3,7 @@ import java.util.*;
 public class MostFrequentNumbers {
     static int[] array;
 
+    
     public static void main(String[] args) {
         // Test Case 1
         array = new int[]{3, 1, 4, 4, 5, 2, 6, 1};
